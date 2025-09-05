@@ -1,0 +1,49 @@
+body {
+  font-family: Arial, sans-serif; /* Q22: you can change a section font below too */
+  background-color: #f0f0f0;
+  background-image: url("./téléchargement.webp"); /* Q24 */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+h1 {
+  color: rgb(0, 79, 128);
+  text-align: center; /* Q23 */
+}
+
+#Desserts {
+  color: navy;
+  font-size: 16px;
+  line-height: 1.5;
+  font-family: "Courier New", monospace; /* Q22: change font somewhere */
+}
+
+/* Q21: M of Menu bigger/different color */
+#titreMenu::first-letter {
+  font-size: 60px;
+  color: red;
+}
+
+/* Q27: title changes on hover */
+#titreMenu:hover {
+  transform: scale(1.1);
+  color: rgb(0, 255, 145);
+}
+
+/* Specific item sizing example */
+#poulet-roti {
+  font-size: 1.25rem;
+}
+
+/* Q25: 80% opacity for a whole chapter (applies to the li and its children) */
+.opac80 {
+  opacity: 0.8;
+}
+
+/* Q26: border around dessert names only */
+.dessert {
+  border: 2px solid #000;
+  padding: 4px 6px;
+  display: inline-block;
+}
