@@ -4,61 +4,147 @@
   <meta charset="UTF-8">
   <title>Menu du Jour</title>
   <link rel="stylesheet" href="lab2_styleWeb.css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.4/raphael-min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/justgage/1.2.9/justgage.min.js"></script>
+
 </head>
-<body>
-  <header>
-    <h1 id="titreMenu">Menu du Jour</h1>
-  </header>
+<body class="container my-4">
 
-  <ol>
-    <li>Entrées
+  <h1 id="titreMenu" class="mb-4">Menu du Jour</h1>
+
+  <nav class="navbar navbar-expand-lg navbar-light bg-light mb-4">
+
+    <div class="dropdown mb-4">
+      <button class="btn btn-primary dropdown-toggle" type="button" id="menuDropdown" data-toggle="dropdown">
+        Menu du Jour
+      </button>
+      <div class="dropdown-menu" aria-labelledby="menuDropdown">
+        <a class="dropdown-item" href="#entrees">Entrées</a>
+        <a class="dropdown-item" href="#plats">Plats principaux</a>
+        <a class="dropdown-item" href="#fromage">Fromage</a>
+        <a class="dropdown-item" href="#desserts">Desserts</a>
+      </div>
+    </div>
+
+  </nav>
+
+  <div id="alertZone"></div>
+
+  <div class="mb-4">
+    <div id="gauge" style="width:250px; height:180px;" class="mb-2"></div>
+    <div class="progress mb-2" style="max-width:250px;">
+      <div id="progressBar" class="progress-bar" role="progressbar"></div>
+    </div>
+    <div class="btn-group">
+      <button id="btnMinus" class="btn btn-secondary">–</button>
+      <button id="btnPlus" class="btn btn-primary">+</button>
+    </div>
+  </div>
+
+  <section class="row mb-4">
+    <div class="col-md-6">
+      <h2 id="entrees" class="h5">Entrées</h2>
       <ul>
-        <li><a href="./lab2_sousPage.html#salade-cesar" title="Voir la recette de Salade César">Salade César</a></li>
-        <li><a href="https://images.ricardocuisine.com/services/recipes/992x1340_88956086056c33f634c1dd.jpg" target="_blank" rel="noopener" title="Photo: Soupe à l’oignon">Soupe à l’oignon</a></li>
-        <li><a href="./lab2_sousPage.html#poutine" title="Voir la recette de Poutine">Poutine</a></li>
+        <li><a href="./lab2_sousPage.html#salade-cesar" title="Voir recette Salade César">Salade César</a></li>
+        <li><a href="https://images.ricardocuisine.com/services/recipes/992x1340_88956086056c33f634c1dd.jpg"
+               target="_blank" rel="noopener" title="Photo: Soupe à l’oignon">Soupe à l’oignon</a></li>
+        <li><a href="./lab2_sousPage.html#poutine" title="Voir recette Poutine">Poutine</a></li>
       </ul>
-    </li>
-
-    <li class="opac80">Plats principaux
+    </div>
+    <div class="col-md-6">
+      <h2 id="plats" class="h5">Plats</h2>
       <ul>
-        <li id="poulet-roti">Poulet rôti</li>
+        <li>Poulet rôti</li>
         <li>Pâtes carbonara</li>
         <li>Lasagne</li>
       </ul>
-    </li>
-
-    <li id="Desserts">Desserts
+    </div>
+    <div class="col-md-6">
+      <h2 id="fromage" class="h5">Fromage</h2>
       <ul>
-        <li class="dessert">Tiramisu</li>
-        <li class="dessert">Crème glacée</li>
-        <li class="dessert">Crème brûlée</li>
+        <li>Brie</li>
+        <li>Cheddar</li>
       </ul>
-    </li>
-
-    <li>Brevages
+    </div>
+    <div class="col-md-6">
+      <h2 id="desserts" class="h5">Desserts</h2>
       <ul>
-        <li id="JusOrange">Jus d'orange</li>
-        <li>Sprite</li>
-        <li>Coke</li>
+        <li>Tiramisu</li>
+        <li>Crème glacée</li>
       </ul>
-    </li>
-  </ol>
+    </div>
+  </section>
 
+  <section class="mb-4">
+    <h2 class="h5">Photo</h2>
+    <div class="oval-frame mb-2">
+      <img src="./poulet-roti-facon-fajita-hero.webp" alt="Poulet rôti">
+    </div>
+  </section>
 
-  <figure>
-    <a href="./poulet-roti-facon-fajita-hero.webp" target="_blank" rel="noopener">
-      <img src="./poulet-roti-facon-fajita-hero.webp" alt="Poulet rôti (vignette)">
-    </a>
-    <figcaption>Clique la vignette pour l’image en grand.</figcaption>
-  </figure>
+  <div class="mb-4">
+    <p>
+      Essayez le resto
+      <a href="https://labanquise.com" target="_blank"
+         data-toggle="popover" title="La Banquise"
+         data-content="994 Rue Rachel E, Montréal. Spécialité poutine.">
+         La Banquise
+      </a>
+    </p>
+  </div>
 
+  <section>
+    <h2 class="h5">Ingrédients</h2>
+    <table class="table table-bordered">
+      <thead class="thead-light">
+        <tr><th>Ingrédient</th><th>Quantité</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Poulet</td><td>500 g</td></tr>
+        <tr><td>Fromage</td><td>200 g</td></tr>
+        <tr><td>Frites</td><td>2 portions</td></tr>
+      </tbody>
+    </table>
+  </section>
 
-  <p>
-    Essayez le restaurant
-    <a href="https://labanquise.com/" target="_blank" rel="noopener"
-       title="994 Rue Rachel E, Montréal, QC H2J 2J3">La Banquise</a>
-    (spécialité poutine).
-  </p>
+  <script>
+    $(function () { $('[data-toggle="popover"]').popover(); });
 
+    const MIN=0, MAX=10;
+    let val=5;
+    const gauge=new JustGage({id:"gauge", value:val, min:MIN, max:MAX});
+    const bar=document.getElementById("progressBar");
+
+    function refresh(){
+      gauge.refresh(val);
+      bar.style.width=(val/MAX*100)+"%";
+      bar.textContent=val+" / "+MAX;
+    }
+    function showAlert(msg){
+      document.getElementById("alertZone").innerHTML=
+        `<div class="alert alert-warning alert-dismissible fade show">
+           ${msg}
+           <button type="button" class="close" data-dismiss="alert">&times;</button>
+         </div>`;
+    }
+    document.getElementById("btnPlus").onclick=()=>{
+      if(val<MAX){
+        val++;refresh()
+        ;} 
+      else showAlert("Attention maximum attenins!");};
+
+    document.getElementById("btnMinus").onclick=()=>{
+      if(val>MIN){
+        val--;refresh();} 
+      else showAlert("Attention minimum attenins!");};
+
+    refresh();
+  </script>
 </body>
 </html>
