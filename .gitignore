@@ -1,0 +1,16 @@
+# Fichiers temporaires Windows
+Thumbs.db
+Desktop.ini
+
+# Sauvegardes automatiques
+*.tmp
+*.bak
+
+# VS Code config (si tu utilises VS Code)
+.vscode/
+
+# Cache navigateur (au cas où)
+*.log
+
+# Mac OS
+.DS_Store
